@@ -1,0 +1,754 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-size: 16px;
+  line-height: 150%;
+  font-weight: 400;
+  border: 0;
+}
+
+:root {
+  --gunmetal: hsl(215, 31%, 21%);
+  --white: #fff;
+  --gradient-1: linear-gradient( hsla(184,95%,95%,0),hsla(216,95%,92%,1));
+  --dark-electric-blue: hsla(215, 17%, 44%, 1);
+}
+
+
+
+body, main, .title-area, .section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bmi-calculator, .details-capture, .your-bmi-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.main-title, .bmi-sub-title, .your-bmi-title, .your-bmi-result, input[type="number"], label[for="metric"], label[for="imperial"], .measurement-unit, .bmi-explanation-title, .highlight-title, .limitations-title, .limitation-card-title {
+  font-weight: 600;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+main {
+  width: 375px;
+  position: relative;
+  overflow: hidden;
+}
+
+.title-area {
+  border-radius: 0px 0px 35px 35px;
+  height: 640px;
+  background: var(--gradient-1, linear-gradient(315deg, #D6E6FE 0%, rgba(214, 252, 254, 0.00) 100%));
+  z-index: -1;
+  padding: 0 1.5rem;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-top: 2rem;
+}
+
+.main-title {
+  color:var(--gunmetal);
+  font-size: 3rem;
+  text-align: center;
+  width: 300px;
+  margin-top: 1.5rem;
+  line-height: 110%;
+  letter-spacing: -2.4px;
+}
+
+.main-description {
+  color: hsl(215, 17%, 44%);
+  text-align: center;
+  margin-top: 1.5rem;
+}
+.section {
+  width: 375px;
+}
+
+.bmi-calculator {
+  position: relative;
+  bottom: 169px;
+  gap: 1.5rem;
+  margin: 0 1.5rem ;
+  background-color: var(--white);
+  padding: 1.5rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 16px 32px 56px 0px rgba(143, 174, 207, 0.25);;
+}
+
+.bmi-sub-title {
+  color: var(--gunmetal);
+  font-size: 1.5rem;
+  letter-spacing: -1.2px;
+}
+
+.your-bmi-container {
+  border-radius: 16px;
+  background: linear-gradient(90deg, #345FF6 0%, #587DFF 100%);
+  color: hsla(0, 0%, 100%, 1);
+  padding: 2rem 2rem;
+}
+
+.your-bmi-result {
+  font-size: 3rem;
+  line-height: 110%;
+  letter-spacing: -2.4px;
+  margin-top: 0.5rem;
+}
+
+.your-bmi-feedback {
+  font-size: 0.875rem;
+  margin-top: 1.5rem;
+}
+
+span {
+  font-weight: 700;
+}
+
+.your-bmi-welcome {
+  margin-top: 1.5rem;
+}
+
+.metric-imperial-selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 31px;
+  height: 31px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px hsla(200, 24%, 88%, 1) solid;
+  stroke-width: 1px;
+  margin-right: 1.125rem;
+  cursor: pointer;
+}
+
+input[type="radio"]:focus, input[type="radio"]:hover {
+  border-color: hsla(227, 92%, 58%, 1);
+}
+
+input[type="radio"]:before {
+  background-image: url("img/Group32.svg")
+}
+
+input[type="radio"]:checked {
+  background: url("img/Group32.svg") center;
+}
+
+input[type="number"] {
+  font-family: 'Inter', sans-serif;
+  border: none;
+  width: 173px;
+  height: 29px;
+  font-size: 1.5rem;
+  letter-spacing: -1.2px;
+  color:var(--gunmetal);
+  padding: 0;
+  cursor: pointer;
+}
+
+input[type="number"]:active, input[type="number"]:focus {
+  border: hsla(227, 92%, 58%, 1) 1px solid;
+}
+
+#height-feet, #height-inches, #weight-st, #weight-lbs {
+  width: 43px;
+  margin-left: 1.5rem;
+}
+
+label[for="metric"] {
+  margin-right: 3.31rem;
+}
+
+label[for="weight"] {
+  margin-top: 1rem;
+}
+
+.bmi-details-metric, .bmi-details-imperial {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.bmi-details-imperial {
+  display: none;
+}
+
+label[for="height"], label[for="weight"] {
+  font-size: 0.875rem;
+  color: hsla(215, 17%, 45%, 1);
+  margin-bottom: 0.5rem;
+}
+
+.metric-height-input-container, .metric-weight-input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 1.5rem;
+  width: 280px;
+  height: 69px;
+  border-radius: 12px;
+  border: 1px solid hsla(198, 23%, 88%, 1);
+}
+
+.imperial-height-input-container-ft, .imperial-height-input-container-in, .imperial-weight-input-container-st, .imperial-weight-input-container-lb {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 132px;
+  height: 69px;
+  border-radius: 12px;
+  border: 1px solid hsla(198, 23%, 88%, 1);
+}
+
+.imperial-height-input-container-in, .imperial-weight-input-container-lb {
+  margin-left: 1rem;
+}
+
+.imperial-side-by-side {
+  display: flex;
+}
+
+.measurement-unit {
+  font-size: 1.5rem;
+  letter-spacing: -1.2px;
+  color:hsla(227, 92%, 58%, 1);
+  padding-right: 1.5rem;
+}
+
+.left-swoop-img {
+  display: none;
+}
+
+.right-swoop-img {
+  display: none;
+}
+
+.bmi-flex-container {
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  position: relative;
+  width: 328px;
+}
+
+.main-image {
+  margin-top: 4.5rem;
+  width: 375px;
+  position: relative;
+  bottom: 169px;
+}
+
+.main-image > img {
+  width: 100%;
+}
+
+.bmi-explanation-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  bottom: 169px;
+}
+
+.bmi-explanation-title {
+  position:relative;
+  margin-top: 3rem;
+  color: var(--gunmetal);
+  font-size: 2rem;
+  line-height: 110%;
+  letter-spacing: -1.6px;
+  
+}
+
+.bmi-explanation-text {
+  color: var(--dark-electric-blue);
+  margin-top: 2rem;
+}
+
+.highlights-container {
+  margin-top: 127.61px;
+  position: relative;
+  bottom: 169px;
+  background: var(--gradient-1, linear-gradient(315deg, #D6E6FE 0%, rgba(214, 252, 254, 0.00) 100%));
+  padding: 0 28.96px 24px 19.04px;
+}
+
+.highlight-image {
+  width: 4rem;
+  height: 4rem;
+}
+
+.highlight-title {
+  margin-top: 2rem;
+  color: var(--gunmetal);
+  font-size: 1.5rem;
+  letter-spacing: -1.2px;
+}
+
+.highlight-text {
+  margin-top: 1.5rem;
+  color: var(--dark-electric-blue);
+  margin-bottom: 2rem;
+}
+
+.limitations-container {
+  position: relative;
+  bottom: 169px;
+  width: 327px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1.1875rem 20.4375rem 1.8125rem;
+  grid-template-rows: 4.5rem 2.1875rem 2rem 9rem 3.5rem 13.5rem 1rem 10.5rem 1rem 12rem 1rem 15rem 1rem 13.5rem;
+  grid-template-areas: 
+  ". . ." 
+  ". lim-title ." 
+  ". . ." 
+  ". lim-text ." 
+  ". . ." 
+  ". gender ."
+  " . . ." 
+  ". age ."
+  ". . ." 
+  ". muscle ."
+  ". . ." 
+  ". pregnancy ." 
+  ". . ." 
+  ". race .";
+}
+
+.limitations-title {
+  color: var(--gunmetal);
+  font-size: 2rem;
+  line-height: 110%;
+  letter-spacing: -1.6px;
+  text-align: center;
+  grid-area: lim-title;
+}
+
+.limitations-text {
+  color: var(--dark-electric-blue);
+  text-align: center;
+  grid-area: lim-text;
+}
+
+.gender {
+  grid-area: gender;
+}
+
+.age {
+  grid-area: age;
+}
+
+.muscle {
+  grid-area: muscle;
+}
+
+.pregnancy {
+  grid-area: pregnancy;
+}
+
+.race {
+  grid-area: race;
+}
+
+.limitation-card {
+  width: 327px;
+  padding: 1.5rem 1.5rem;
+  border-radius: 1rem;
+  background-color: var(--white);
+  box-shadow: 16px 32px 56px 0px rgba(143, 174, 207, 0.25);
+}
+
+.limitation-card-flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.limitation-card-title {
+  font-size: 1.25rem;
+  color: var(--gunmetal);
+  letter-spacing: -1px;
+  margin-left: 1rem;
+}
+
+.limitation-card-logo {
+  width: 2rem;
+  height: 2rem;
+}
+
+.limitation-card-text {
+  color: var(--dark-electric-blue);
+}
+
+@media (min-width: 768px) {
+  main {
+    width: 768px;
+  }
+
+  .main-title {
+    margin-top: 2.5rem;
+    width: 686px;
+    height: auto;
+  }
+
+  .bmi-calculator {
+    bottom: 286px;
+    width: 686px;
+    padding: 2rem 2rem;
+    gap: 2rem;
+  }
+
+  .metric-imperial-selector {
+    width: 622px;
+    justify-content: flex-start;
+  }
+
+  label[for="metric"] {
+    margin-right: 14rem;
+  }
+
+  .bmi-details-metric {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .metric-weight-section {
+    margin-left: 1.5rem;
+  }
+
+  .metric-height-input-container, .metric-weight-input-container {
+    width: 299px
+  }
+
+  .your-bmi-container {
+    width: 622px;
+    border-radius: 10px 75px 75px 10px;
+  }
+
+  .your-bmi-container-result {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .your-bmi-container-inner-left {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+
+  .your-bmi-container-inner-right {
+    width: 50%;
+    padding-left: 12px;
+  }
+
+  .your-bmi-feedback {
+    margin: 0;    
+  }
+
+  .bmi-flex-container {
+    flex-direction: row;
+    width: 686px;
+  }
+
+  .main-image {
+    margin-top: 0;
+    width: 360px;
+    bottom: 119px;
+    right: 75.04px;
+    border-radius: 32px;
+    background: hsl(203, 92%, 95%, 1);
+    height: 300px;
+    position: relative;
+  }
+
+  .main-image > img {
+   position: absolute;
+   right: 0px;
+   bottom: 0px;
+   width: 368px;
+  }
+
+  .bmi-explanation-container {
+    width: 331px;
+  }
+
+  .bmi-explanation-title {
+    margin-top: 0;
+  }
+
+  .highlight {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .highlight-detail-flex {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .highlight-title {
+    margin-top: 0;
+  }
+
+  .highlights-container {
+    margin: 190.09px 0 0 0;
+    padding: 0 43px 0 39px;
+  }
+
+  .highlight-image {
+    margin: 18.5px 40px 0 0;
+  }
+
+  .highlight-text {
+    margin: 1.5rem 0 2.5rem 0;
+  }
+
+  .highlight:last-child {
+    margin-bottom:1.25rem;
+  }
+
+  .limitations-container {
+    display: grid;
+    width: 100%;
+    grid-template-rows: 6rem 2.1875rem 2rem 4.5rem 3.5rem 14.5rem 1.5rem 16rem 1.5rem 14.5rem;
+    grid-template-columns: 2.4375rem 10rem 10.9375rem 0.9375rem 10.9375rem 10rem 2.6875rem;
+    grid-template-areas: 
+    ". . . . . . ."
+    ". . lim-title lim-title lim-title . ."
+    ". . . . . . ."
+    ". lim-text lim-text lim-text lim-text lim-text ."
+    ". . . . . . ."
+    ". gender gender . age age ."
+    ". . . . . . ."
+    ". muscle muscle . pregnancy pregnancy ."
+    ". . . . . . ."
+    ". . race race race. ."
+    ;
+  }
+
+  .limitations-text {
+    padding: 0 43px 0 39px;
+  }
+ 
+ .limitation-card {
+    width: 335px;
+    padding: 2rem;
+    align-items: center;
+ }
+
+.limitation-card:last-child {
+  width: 365px;
+  height: 232px;
+}
+  
+}
+
+@media (min-width:1440px) {
+ main {
+  width: 1440px;
+ }
+
+ .logo {
+  width: 4rem;
+  height: 4rem;
+  margin: 0;
+ }
+
+ .title-area {
+  width: 978px;
+  height: 737px;
+  padding: 75px 0 0 116px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: flex-start;
+}
+
+  .main-title {
+    width: 564px;
+    text-align: left;
+    margin-top: 127px;
+    font-size: 4rem;
+    letter-spacing: -3.2px;
+  }
+
+  .main-description {
+    margin-top: 35px;
+    width: 465px;
+    text-align: left;
+  }
+
+  .bmi-calculator {
+    bottom: 570px;
+    left: 270px;
+    width: 564px;
+  }
+
+  .metric-imperial-selector {
+    width: 500px;
+  }  
+
+  label[for="metric"] {
+    margin-right: 163px;
+  }
+
+  .bmi-details-metric {
+    margin-top: 2rem;
+  }
+
+  .metric-height-input-container, .metric-weight-input-container {
+    margin-top: 8px;
+    width: 238px;
+  }
+
+  .your-bmi-container {
+    width: 500px;
+  }
+  
+  .your-bmi-result {
+    font-size: 4rem;
+    letter-spacing: -3.2px;
+  }
+  
+  .imperial-height-input-container-ft, .imperial-height-input-container-in, .imperial-weight-input-container-st, .imperial-weight-input-container-lb {
+    width: 238px;
+  }
+  
+  .bmi-flex-container {
+    width: 1160px;
+    height: 533px;
+    bottom: 355px;
+    justify-content: space-around;
+  }
+
+  .main-image > img {
+    width: 468px;
+    right: 48px;
+  }
+
+  .bmi-explanation-container {
+    bottom: 0;
+    width: 465px;
+  }
+
+  .bmi-explanation-title {
+    font-size: 3rem;
+    letter-spacing: -2.4px;
+  }
+
+  .main-image {
+    bottom: 0;
+    width: 564px;
+    height: 388px;
+  }
+ 
+  .left-swoop-img {
+    display: block;
+    position: absolute;
+    width: 85px;
+    height: 200px;
+    top: -145px;
+    right: 63px;
+  }
+
+  .highlights-container {
+    width: 1392px;
+    height: 402px;
+    bottom: 355px;
+    margin-top: 0;
+    padding: 72px 117px 96px 116px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 35px;
+  }
+
+.highlight {
+  flex-direction: column;
+  padding-right: 2rem;
+}
+
+.highlight-image {
+  margin:0 0 45px 0;
+}
+
+.highlight-text {
+  margin: 1.5rem 0 0 0;
+  width: 365px;
+}
+
+.limitations-container {
+  bottom: 355px;
+  width: 1440px;
+  grid-template-rows: 7.5rem 3.3125rem 2.1875rem 6rem 3rem 1.1875rem 0.8125rem 6.8125rem /* swoosh */ 4.6875rem 1.5rem 14.5em 7.5rem;
+  grid-template-columns: 8.75rem 10.3125rem 2.125rem 3.75rem 8.6875rem 10.375rem 2rem 6.25rem 4.1875rem 2rem 10.375rem 7.875rem 6.1875rem 8.75rem/* columns*/;
+  grid-template-areas: 
+  ". . . . . . . . . . . . . ."
+  ". lim-title lim-title lim-title lim-title . . . gender gender gender gender . ."
+  ". . . . . . . . gender gender gender gender . ." 
+  ". lim-text lim-text lim-text lim-text lim-text . . gender gender gender gender . ."
+  ". . . . . . . . gender gender gender gender . ."
+  ". . . . . . . . . . . . . ."
+  ". . . . . . . . . . . . . ."
+  ". . swoosh swoosh . age age age age . muscle muscle muscle ."
+  ". . swoosh swoosh . age age age age . muscle muscle muscle ."
+  ". . . . . . . . . . . . . ."
+  ". . .  pregnancy pregnancy pregnancy . race race race race . . ."
+  ". . . . . . . . . . . . . ."
+  
+}
+
+  .limitations-title {
+    text-align: left;
+    font-size: 3rem;
+    letter-spacing: -2.4px;
+  }
+
+  .limitations-text {
+    text-align: left;
+    padding: 0;
+  }
+
+  .right-swoop-img {
+    display: block;
+    grid-area: swoosh;
+    height: 7.625rem;
+    width: 5.875rem;
+  }
+
+  .limitation-card {
+    width: 365px;
+  }
+}
