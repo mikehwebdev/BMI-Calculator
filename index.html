@@ -17,68 +17,67 @@
         <h1 class="main-title">Body Mass<br/>
           Index Calculator</h1>
           <p class="main-description">Better understand your weight in relation to your height using our body mass index (BM) calculator. While BMI is not the sole determinant of a healthy weight, it offers a valuable starting point to evaluate your overall health and well-being.</p>
-      </section>
-      <section class="bmi-calculator">
-        <h2 class="bmi-sub-title">Enter your details below</h2>
+          <div class="title-gradient"></div>
+      <div class="bmi-calculator">
           <form class="details-capture">
+            <h2 class="bmi-sub-title">Enter your details below</h2>
             <div class="metric-imperial-selector">
               <input type="radio" id="metric" name="bmi-selector" checked>
-              <label for="metric">Metric</label>
+              <label for="metric" class="radio-label">Metric</label>
               <input type="radio" id="imperial" name="bmi-selector">
-              <label for="imperial">Imperial</label>
+              <label for="imperial" class="radio-label">Imperial</label>
             </div>
 
             <div class="bmi-details-metric">
-              <div class="metric-height-section">
-              <label for="height">Height</label>
+
+                <label for="metricHeight">Height</label>
               <div class="metric-height-input-container">
-                <input type="number" id="height" placeholder="0">
-                <p class="measurement-unit">cm</p>
+                <input type="number" id="metricHeight" placeholder="0">
+                <p class="height-measure-cm">cm</p>
               </div>
-            </div>
-              <div class="metric-weight-section">
-              <label for="weight">Weight</label>
+                
+                <label for="metricWeight">Weight</label>
               <div class="metric-weight-input-container">
-                <input type="number" id="weight" placeholder="0">
-                <p class="measurement-unit">kg</p>
+                <input type="number" id="metricWeight" placeholder="0">
+                <p class="weight-measure-kg">kg</p>
               </div>
+        
             </div>
-            </div>
+    
             <div class="bmi-details-imperial">
-              <label for="height">Height</label>
-              <div class="imperial-side-by-side">
-                <div class="imperial-height-input-container-ft">
-                    <input type="number" id="height-feet" placeholder="0">
-                    <p class="measurement-unit">ft</p>
-                </div>
-                <div class="imperial-height-input-container-in">
-                  <input type="number" id="height-inches" placeholder="0">
-                  <p class="measurement-unit">in</p>
-                </div>
+              <label for="imperialHeight">Height</label>
+              
+              <div class="imperial-height-input-container">
+                
+                    <input type="number" id="imperialHeight-ft" placeholder="0">
+                    <p class="height-measure-ft">ft</p>
+                
+                  <input type="number" id="imperialHeight-in" placeholder="0">
+                  <p class="height-measure-in">in</p>
+                
               </div>
               
-              <label for="weight">Weight</label>
-              <div class="imperial-side-by-side">
-                <div class="imperial-weight-input-container-st">
-                  <input type="number" id="weight-st" placeholder="0">
-                  <p class="measurement-unit">st</p>
-                </div>
-                <div class="imperial-side-by-side">
-                  <div class="imperial-weight-input-container-lb" >
-                    <input type="number" id="weight-lbs" placeholder="0">
-                    <p class="measurement-unit">lbs</p>
-                  </div>
+              <label for="imperialWeight">Weight</label>
+              <div class="imperial-weight-input-container">
+             
+                  <input type="number" id="imperialWeight-st" placeholder="0">
+                  <p class="weight-measure-st">st</p>
+             
+                    <input type="number" id="imperialWeight-lbs" placeholder="0">
+                    <p class="weight-measure-lbs">lbs</p>
+             
                 </div>
               </div>
+            <div class="your-bmi-container">
+              <p class="your-bmi-title">Welcome!</p>
+              <p class="your-bmi-welcome">Enter your height and weight and you'll see your BMI result here</p>
             </div>
           </form>
-          <div class="your-bmi-container">
-            <p class="your-bmi-title">Welcome!</p>
-            <p class="your-bmi-welcome">Enter your height and weight and you'll see your BMI result here</p>
           </div>
+          
       </section>
 
-      <section class="bmi-flex-container">
+      <section class="bmi-container">
         <img src="img/pattern-curved-line-left.svg" class="left-swoop-img" alt="A decorative swoosh">
         <div class="main-image">
           <img src="img/tablet-main-image.png"  alt="Man eating sushi with chopsticks">

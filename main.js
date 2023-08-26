@@ -1,13 +1,13 @@
 const imperialRadioEl = document.getElementById('imperial')
 const metricRadioEl = document.getElementById('metric')
 
-const metricHeightEl = document.getElementById('height')
-const metricWeightEl = document.getElementById('weight')
+const metricHeightEl = document.getElementById('metricHeight')
+const metricWeightEl = document.getElementById('metricWeight')
 
-const imperialHeightFeetEl = document.getElementById('height-feet')
-const imperialHeightInchesEl = document.getElementById('height-inches')
-const imperialWeightStonesEl = document.getElementById('weight-st')
-const imperialWeightPoundsEl = document.getElementById('weight-lbs')
+const imperialHeightFeetEl = document.getElementById('imperialHeight-ft')
+const imperialHeightInchesEl = document.getElementById('imperialHeight-in')
+const imperialWeightStonesEl = document.getElementById('imperialWeight-st')
+const imperialWeightPoundsEl = document.getElementById('imperialWeight-lbs')
 
 
 const imperialInputsEl = document.querySelector('.bmi-details-imperial')
@@ -29,13 +29,13 @@ let imperialWeightValue = 0
 let bmi = 0
 
 imperialRadioEl.addEventListener('click', ()=>{
-    imperialInputsEl.style.display = 'flex'
+    imperialInputsEl.style.display = 'grid'
     metricInputsEl.style.display ='none'
 })
 
 metricRadioEl.addEventListener('click', ()=>{
     imperialInputsEl.style.display = 'none'
-    metricInputsEl.style.display ='flex'
+    metricInputsEl.style.display ='grid'
 })
 
 
