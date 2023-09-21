@@ -79,7 +79,7 @@ main {
 .bmi-calculator {
   z-index: 2;
   max-width: 42.875rem;
-  /* height:fit-content; */
+  height:fit-content;
   border-radius: 1rem;
   background-color: var(--white);
   grid-area: calculator;
@@ -976,6 +976,14 @@ input[type="number"]:active, input[type="number"]:focus {
       ;
     }
 
+    .your-bmi-container-result > div {
+      width: 12.875rem;
+    }
+
+    .your-bmi-feedback {
+      width: 12.875rem;
+      font-size: 0.875rem;
+    }
     .main-image {
       width: 35.25rem;
       height: 24.25rem;
