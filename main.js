@@ -1,3 +1,5 @@
+
+
 const imperialRadioEl = document.getElementById('imperial')
 const metricRadioEl = document.getElementById('metric')
 
@@ -31,45 +33,35 @@ let bmi = 0
 let minWeightString = ''
 let maxWeightString = ''
 
-imperialRadioEl.addEventListener('click', () => {
-    imperialInputsEl.style.display = 'grid'
-    metricInputsEl.style.display = 'none'
-})
+// Utility functions
 
-metricRadioEl.addEventListener('click', () => {
-    imperialInputsEl.style.display = 'none'
-    metricInputsEl.style.display = 'grid'
-})
+function imperialReady() {
+    if (imperialHeightFeetEl.value && imperialHeightInchesEl.value && imperialWeightPoundsEl.value && imperialWeightStonesEl.value) {
+        return true
+    } else {
+        return false
+    }
+}
 
-metricHeightEl.addEventListener('keyup', () => {
-    metricHeightValue = metricHeightEl.value
-    bmiCalculator('metric')
-})
-
-metricWeightEl.addEventListener('keyup', () => {
-    metricWeightValue = metricWeightEl.value
-    bmiCalculator('metric')
-})
-
-imperialHeightFeetEl.addEventListener('keyup', () => {
-    imperialFeetValue = imperialHeightFeetEl.value
+function imperialUpdater(){
+    if (imperialReady() === true) {
     bmiCalculator('imperial')
-})
+    } else {
+        bmiInfoContainer.innerHTML = 
+        `<p class="your-bmi-title">Welcome!</p>
+        <p class="your-bmi-welcome">Enter your height and weight and you'll see your BMI result here</p>`
+    }
+}
 
-imperialHeightInchesEl.addEventListener('keyup', () => {
-    imperialInchesValue = imperialHeightInchesEl.value
-    bmiCalculator('imperial')
-})
-
-imperialWeightStonesEl.addEventListener('keyup', () => {
-    imperialStonesValue = imperialWeightStonesEl.value
-    bmiCalculator('imperial')
-})
-
-imperialWeightPoundsEl.addEventListener('keyup', () => {
-    imperialPoundsValue = imperialWeightPoundsEl.value
-    bmiCalculator('imperial')
-})
+function metricUpdater() {
+    if (metricHeightEl.value && metricWeightEl.value) {
+        bmiCalculator('metric')
+    } else {
+        bmiInfoContainer.innerHTML =
+            `<p class="your-bmi-title">Welcome!</p>
+        <p class="your-bmi-welcome">Enter your height and weight and you'll see your BMI result here</p>`
+    }
+}
 
 function bmiCalculator(measurementSystem) {
 
@@ -110,7 +102,6 @@ function bmiCalculator(measurementSystem) {
     }
 
     bmiHtmlUpdate()
-
 }
 
 function bmiHtmlUpdate() {
@@ -131,3 +122,46 @@ function bmiHtmlUpdate() {
 
     `
 }
+
+// Event listeners
+
+imperialRadioEl.addEventListener('click', () => {
+    imperialInputsEl.style.display = 'grid'
+    metricInputsEl.style.display = 'none'
+})
+
+metricRadioEl.addEventListener('click', () => {
+    imperialInputsEl.style.display = 'none'
+    metricInputsEl.style.display = 'grid'
+})
+
+metricHeightEl.addEventListener('keyup', () => {
+    metricHeightValue = metricHeightEl.value
+    metricUpdater() 
+})
+
+metricWeightEl.addEventListener('keyup', () => {
+    metricWeightValue = metricWeightEl.value
+    metricUpdater()
+})
+
+imperialHeightFeetEl.addEventListener('keyup', () => {
+    imperialFeetValue = imperialHeightFeetEl.value
+    imperialUpdater()
+})
+
+imperialHeightInchesEl.addEventListener('keyup', () => {
+    imperialInchesValue = imperialHeightInchesEl.value
+    imperialUpdater()
+})
+
+imperialWeightStonesEl.addEventListener('keyup', () => {
+    imperialStonesValue = imperialWeightStonesEl.value
+    imperialUpdater()
+})
+
+imperialWeightPoundsEl.addEventListener('keyup', () => {
+    imperialPoundsValue = imperialWeightPoundsEl.value
+    imperialUpdater()
+})
+

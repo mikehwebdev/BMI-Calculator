@@ -173,7 +173,7 @@ input[type="radio"]:checked {
 .bmi-details-metric {
   display: grid;
   grid-area: bmi-details-input;
-  grid-template-columns:minmax(1.5rem, 3rem) minmax(13.8125rem, 27.625rem) minmax(2.1875rem, 4.375rem);
+  grid-template-columns:minmax(1.5rem, 6rem) minmax(13.8125rem, 27.625rem) minmax(2.1875rem, 10.375rem);
   grid-template-rows: 1.8125rem 4.3125rem 1rem 1.8125rem 4.3125rem;
   grid-template-areas: 
   "metric-height-label metric-height-label ."
@@ -186,7 +186,7 @@ input[type="radio"]:checked {
 .metric-height-input-container {
   grid-area: metric-height-input-container;
   display: grid;
-  grid-template-columns:minmax(13.8125rem, 27.625rem) minmax(3.6875rem, 7.375rem);
+  grid-template-columns:minmax(13.8125rem, 35rem) minmax(3.6875rem, 7.375rem);
   grid-template-rows: 4.3125rem;
   grid-template-areas: 
   "metric-height-input metric-height-input";
@@ -195,7 +195,7 @@ input[type="radio"]:checked {
 .metric-weight-input-container{
   grid-area: metric-weight-input-container;
   display: grid;
-  grid-template-columns: minmax(13.8125rem, 27.625rem) minmax(3.6875rem, 7.375rem);
+  grid-template-columns: minmax(13.8125rem, 35rem) minmax(3.6875rem, 7.375rem);
   grid-template-rows: 4.3125rem;
   grid-template-areas: 
   "metric-weight-input metric-weight-input";
