@@ -31,7 +31,6 @@ let bmi = 0
 let minWeightString = ''
 let maxWeightString = ''
 
-
 imperialRadioEl.addEventListener('click', () => {
     imperialInputsEl.style.display = 'grid'
     metricInputsEl.style.display = 'none'

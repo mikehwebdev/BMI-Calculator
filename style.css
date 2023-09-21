@@ -14,6 +14,7 @@
 body {
   font-family: 'Inter', sans-serif;
   caret-color: transparent;
+  font-weight: 400;
 }
 
 main {
@@ -25,9 +26,9 @@ main {
 .title-area {
   position: relative;
   display: grid;
-  width: 23.4375rem;
-  grid-template-columns: minmax(1.5rem, 3rem) minmax(9rem, 18rem) minmax(2.5rem,5rem) minmax(9rem, 18rem) minmax(1.5rem, 3rem);
-  grid-template-rows: 2rem 2.5rem 1.5rem 9.9375rem 1.5rem 9rem 3rem 40.5625rem;
+  min-width: 23.4375rem; 
+  grid-template-columns: minmax(1.5rem, 2.44rem) minmax(9rem, 20rem) minmax(2.5rem,10rem) minmax(9rem, 20rem) minmax(1.5rem, 2.44rem);
+  grid-template-rows: 2rem 2.5rem 1.5rem auto 1.5rem auto 3rem 40.5625rem;
   grid-template-areas: 
   ". . . . ."
   ". . logo . ."
@@ -53,6 +54,7 @@ main {
   width: 2.5rem;
   height: 2.5rem;
   grid-area: logo;
+  justify-self: center;
 }
 
 .main-title {
@@ -67,15 +69,17 @@ main {
 
 .main-description {
   color: var(--dark-electric-blue, #5E6E85);
+  max-width: 30.625rem;
+  justify-self: center;
   text-align: center;
-  font-weight: 400;
   line-height: 150%; 
   grid-area: main-description;
 }
 
 .bmi-calculator {
   z-index: 2;
-  height:fit-content;
+  max-width: 42.875rem;
+  /* height:fit-content; */
   border-radius: 1rem;
   background-color: var(--white);
   grid-area: calculator;
@@ -84,7 +88,7 @@ main {
 
 .details-capture {
   display: grid;
-  grid-template-columns: 1.5rem 8.75rem 8.75rem 1.5rem;
+  grid-template-columns: minmax(1.5rem, 2rem) minmax(8.75rem, 22.5rem) minmax(8.75rem, 22.5rem) minmax(1.5rem, 2rem);
   grid-template-rows: 1.5rem 1.8125rem 1.5rem 1.9375rem 1.5rem 13.25rem 1.5rem 16.0625rem 1.5rem;
   grid-template-areas:
   ". . . ."
@@ -108,19 +112,30 @@ span {
   color: var(--gunmetal);
   font-size: 1.5rem;
   font-weight: 600;
-  letter-spacing: -1.2px;
+  letter-spacing: -0.075rem;
 }
 
 .metric-imperial-selector {
   grid-area: met-imp-selector;
-  display: flex;
-  align-items: center;
+  display:grid;
+  grid-template-columns: 1.9375rem 1.12rem minmax(4.9425rem, 15.63rem) 1.5rem 1.9375rem 1.12rem minmax(4.9425rem, 15.63rem);
+  grid-template-rows: 1.9375rem;
+  grid-template-areas: 
+  "metric-radio . metric-label . imperial-radio . imperial-label";
 }
 
 .radio-label {
-  margin-left: 1.12rem;
   line-height: 150%;
   font-weight: 600;
+  align-self: center;
+}
+
+.radio-label:first-of-type {
+  grid-area: metric-label;
+}
+
+.radio-label:last-of-type {
+  grid-area: imperial-label;
 }
 
 input[type="radio"] {
@@ -135,8 +150,12 @@ input[type="radio"] {
   cursor: pointer;
 }
 
+input[type="radio"]:first-of-type {
+  grid-area: metric-radio;
+}
+
 input[type="radio"]:last-of-type {
-  margin-left: 3.3125rem;
+  grid-area: imperial-radio;
 }
 
 input[type="radio"]:focus, input[type="radio"]:hover {
@@ -154,7 +173,7 @@ input[type="radio"]:checked {
 .bmi-details-metric {
   display: grid;
   grid-area: bmi-details-input;
-  grid-template-columns: 1.5rem 13.8125rem 2.1875rem;
+  grid-template-columns:minmax(1.5rem, 3rem) minmax(13.8125rem, 27.625rem) minmax(2.1875rem, 4.375rem);
   grid-template-rows: 1.8125rem 4.3125rem 1rem 1.8125rem 4.3125rem;
   grid-template-areas: 
   "metric-height-label metric-height-label ."
@@ -164,10 +183,10 @@ input[type="radio"]:checked {
   "metric-weight-input-container metric-weight-input-container metric-weight-input-container";
 }
 
-.metric-height-input-container{
+.metric-height-input-container {
   grid-area: metric-height-input-container;
   display: grid;
-  grid-template-columns: 13.8125rem 3.6875rem;
+  grid-template-columns:minmax(13.8125rem, 27.625rem) minmax(3.6875rem, 7.375rem);
   grid-template-rows: 4.3125rem;
   grid-template-areas: 
   "metric-height-input metric-height-input";
@@ -176,7 +195,7 @@ input[type="radio"]:checked {
 .metric-weight-input-container{
   grid-area: metric-weight-input-container;
   display: grid;
-  grid-template-columns: 13.8125rem 3.6875rem;
+  grid-template-columns: minmax(13.8125rem, 27.625rem) minmax(3.6875rem, 7.375rem);
   grid-template-rows: 4.3125rem;
   grid-template-areas: 
   "metric-weight-input metric-weight-input";
@@ -186,31 +205,32 @@ input[type="radio"]:checked {
   grid-area: metric-height-input;
   padding-left: 1.5rem;
   border: 1px hsla(200, 24%, 88%, 1) solid;
-  border-radius:12px;
+  border-radius:0.75rem;
 }
 
 #metricWeight {
   grid-area: metric-weight-input;
   padding-left: 1.5rem;
   border: 1px hsla(200, 24%, 88%, 1) solid;
-  border-radius:12px;
+  border-radius:0.75rem;
 }
 
 .height-measure-cm, .weight-measure-kg {
   font-size: 1.5rem;
   font-weight: 600;
-  letter-spacing: -1.2px;
+  letter-spacing: -0.075rem;
   color:hsla(227, 92%, 58%, 1);
   grid-row: 1/2;
   grid-column: 2/3;
-  padding: 1.25rem 0 0 0;
+  padding: 1.25rem 1.5rem 0 0;
+  justify-self: end;
 }
 
 
 .bmi-details-imperial {
   display: none;
   grid-area: bmi-details-input;
-  grid-template-columns: 1.5rem 13.8125rem 2.1875rem 1.5rem;
+  grid-template-columns: minmax(1.5rem, 3rem) minmax(13.8125rem, 27.625rem) minmax(2.1875rem, 4.375rem);
   grid-template-rows: 1.8125rem 4.3125rem 1rem 1.8125rem 4.3125rem;
   grid-template-areas: 
   "imperial-height-label imperial-height-label . ."
@@ -223,7 +243,7 @@ input[type="radio"]:checked {
 .imperial-height-input-container{
   grid-area: imperial-height-input-container;
   display: grid;
-  grid-template-columns: 5.6875rem 2.5625rem 1rem 5.5rem 2.75rem;
+  grid-template-columns:minmax(5.6875rem,15rem) minmax(2.5625rem, 5.125rem) minmax(1rem, 2rem) minmax(5.5rem, 15rem) minmax(2.75rem, 5.5rem);
   grid-template-rows: 4.3125rem;
   grid-template-areas: 
   "imperial-height-input-ft imperial-height-input-ft . imperial-height-input-in imperial-height-input-in";
@@ -232,46 +252,47 @@ input[type="radio"]:checked {
 .imperial-weight-input-container{
   grid-area: imperial-weight-input-container;
   display: grid;
-  grid-template-columns: 5.6875rem 2.5625rem 1rem 4.6875rem 0.8125rem 2.75rem;
+  grid-template-columns: minmax(5.6875rem,15rem) minmax(2.5625rem, 5.125rem) minmax(1rem,2rem) minmax(5.6875rem,15rem) minmax(2.5625rem, 5.125rem);
   grid-template-rows: 4.3125rem;
   grid-template-areas: 
-  "imperial-weight-input-st imperial-weight-input-st . imperial-weight-input-lbs imperial-weight-input-lbs imperial-weight-input-lbs";
+  "imperial-weight-input-st imperial-weight-input-st .  imperial-weight-input-lbs imperial-weight-input-lbs";
 }
 
 #imperialHeight-ft{
   grid-area: imperial-height-input-ft;
   padding-left: 1.5rem;
   border: 1px hsla(200, 24%, 88%, 1) solid;
-  border-radius:12px
+  border-radius: 0.75rem;
 }
 
 #imperialHeight-in{
   grid-area: imperial-height-input-in;
   padding-left: 1.5rem;
   border: 1px hsla(200, 24%, 88%, 1) solid;
-  border-radius:12px
+  border-radius: 0.75rem;
 }
 
 #imperialWeight-st{
   grid-area: imperial-weight-input-st;
   padding-left: 1.5rem;
   border: 1px hsla(200, 24%, 88%, 1) solid;
-  border-radius:12px
+  border-radius: 0.75rem;
 }
 
 #imperialWeight-lbs{
   grid-area: imperial-weight-input-lbs;
   padding-left: 1.5rem;
   border: 1px hsla(200, 24%, 88%, 1) solid;
-  border-radius:12px
+  border-radius:0.75rem;
 }
 
 .height-measure-ft, .height-measure-in, .weight-measure-st, .weight-measure-lbs {
   font-size: 1.5rem;
   font-weight: 600;
-  letter-spacing: -1.2px;
+  letter-spacing: -0.075rem;
   color:hsla(227, 92%, 58%, 1);
-  padding: 1.25rem 0 0 0;
+  padding: 1.25rem 1.5rem 0 0;
+  justify-self: end;
 }
 
 .height-measure-ft {
@@ -292,7 +313,7 @@ input[type="radio"]:checked {
 .weight-measure-lbs {
   grid-row: 1/2;
   grid-column: 5/6;
-  justify-self: start;
+  justify-self: end;
 }
 
 label[for="metricHeight"] {
@@ -327,19 +348,16 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* input[type=number"] {
-  
-} */
-
 input[type="number"] {
   -moz-appearance: textfield;
   font-family: 'Inter', sans-serif;
   border: none;
   font-size: 1.5rem;
-  letter-spacing: -1.2px;
+  letter-spacing: -0.075rem;
   color:var(--gunmetal);
   font-weight: 600;
   padding: 0;
+  caret-color: var(--gunmetal);
   cursor: pointer;
 }
 
@@ -369,7 +387,6 @@ input[type="number"]:active, input[type="number"]:focus {
 
 .your-bmi-welcome, .your-bmi-feedback {
   font-size: 0.875rem;
-  font-weight: 400;
   line-height: 150%;
 }
 
@@ -377,7 +394,7 @@ input[type="number"]:active, input[type="number"]:focus {
   font-size: 3rem;
   font-weight: 600;
   line-height: 110%;
-  letter-spacing: -2.4px;
+  letter-spacing: -0.15rem;
   padding: 0.5rem 0 1.5rem 0;
 }
 
@@ -385,7 +402,6 @@ input[type="number"]:active, input[type="number"]:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 23.4375rem;
   margin-bottom: 4.4756rem;
 }
 
@@ -397,46 +413,61 @@ input[type="number"]:active, input[type="number"]:focus {
   display: none;
 }
 
+.bmi-container-position {
+  width: 100%;
+}
+
+.main-image-container {
+  position: relative; 
+  aspect-ratio: 1.1/1;
+  width: 100%;
+  margin: 4.5rem 0 3rem 0; 
+}
+
 .main-image {
-  position: relative;
-  width: 23.4375rem;
+  position: absolute;
+  height: 73%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   background: hsl(203, 92%, 95%, 1);
   border-radius: 2rem;
-  height: 16.125rem;
-  margin: 10.525rem 0 3rem 0;
-}
+} 
 
-.main-image > img {
-  width: 20.5rem;
-  height: 22.125rem;
+.main-image-container > img  {
   position: absolute;
   bottom: 0;
-  left: 2rem;
-}
+  left: 0;
+  right: 0;
+  margin: auto; 
+  width: 80%;
+} 
 
 .bmi-explanation-title {
-  width: 20.5rem;
+  min-width: 20.5rem;
+  max-width: 80%;
   color: var(--gunmetal);
   font-size: 2rem;
   font-weight: 600;
   line-height: 110%;
-  letter-spacing: -1.6px;
+  letter-spacing: -0.1rem;
 }
 
 .bmi-explanation-text {
-  width: 20.5rem;
+  min-width: 20.5rem;
+  max-width: 80%;
   color: var(--dark-electric-blue);
   line-height: 150%;
-  font-weight: 400;
   margin-top: 2rem;
 }
 
 .highlights-container {
-  width: 23.4375rem;
+  min-width: 23.4375rem;
   position: relative;
   display: grid;
-  grid-template-columns: 1.19rem 4rem 16.4375rem 1.81rem;
-  grid-template-rows: 3.5rem 6rem 3.3125rem 4.5rem 2.5rem  6rem 3.3125rem 6rem 2.5rem 6rem 3.3125rem 4.5rem 3.5rem;
+  grid-template-columns: minmax(1.19rem,2.38rem) minmax(4rem,8rem) minmax(16.4375rem ,32.875rem) minmax(1.81rem,3.62rem);
+  grid-template-rows: 3.5rem 6rem 3.3125rem auto 2.5rem  6rem 3.3125rem auto 2.5rem 6rem 3.3125rem auto 3.5rem;
   grid-template-areas: 
   ". . . ."
   ". eat-img . ."
@@ -514,18 +545,16 @@ input[type="number"]:active, input[type="number"]:focus {
 .highlight-text {
   color: var(--dark-electric-blue);
   line-height: 150%;
-  font-weight: 400;
 }
 
 .limitations-container {
-  width: 23.4375rem;
+  min-width: 23.4375rem;
   display: grid;
-  grid-template-columns: 1.1875rem 20.4375rem 1.8125rem;
-  grid-template-rows: 4.5rem 2.1875rem 2rem 9rem 3.5rem 13.5rem 1rem 10.5rem 1rem 12rem 1rem 15rem 1rem 13.5rem 6rem;
+  grid-template-columns:minmax(1.1875rem, 2.375rem) minmax(20.4375rem, 40.875rem) minmax(1.8125rem, 3.625rem);
+  grid-template-rows: 4.5rem 4.1875rem auto 3.5rem auto 1rem auto 1rem auto 1rem auto 1rem auto 6rem;
   grid-template-areas: 
   ". . ." 
   ". lim-title ." 
-  ". . ." 
   ". lim-text ." 
   ". . ." 
   ". gender ."
@@ -554,7 +583,6 @@ input[type="number"]:active, input[type="number"]:focus {
   color: var(--dark-electric-blue);
   text-align: center;
   grid-area: lim-text;
-  font-weight: 400;
   line-height: 150%;
 }
 
@@ -579,8 +607,8 @@ input[type="number"]:active, input[type="number"]:focus {
 }
 
 .limitation-card {
-  width: 20.4375rem;
-  padding: 2rem;
+  min-width: 20.4375rem;
+  padding: 1.5rem;
   border-radius: 1rem;
   background-color: var(--white);
   box-shadow: 16px 32px 56px 0px rgba(143, 174, 207, 0.25);
@@ -597,7 +625,7 @@ input[type="number"]:active, input[type="number"]:focus {
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--gunmetal);
-  letter-spacing: -1px;
+  letter-spacing: -0.0625rem;
   margin-left: 1rem;
 }
 
@@ -613,8 +641,8 @@ input[type="number"]:active, input[type="number"]:focus {
 
 @media(min-width:768px) {
   .title-area {
-    width: 48rem;
-    grid-template-columns: 2.44rem 20.18rem 2.5rem 20.19rem 2.69rem;
+    min-width: 48rem;
+    grid-template-columns: 2.44rem minmax(20.18rem, 40.36rem) minmax(2.5rem, 5rem) minmax(20.19rem, 40.28rem) 2.69rem;
     grid-template-rows: 2rem 2.5rem 2.5rem 6.625rem 1.5rem 4.5rem 2.5rem 29.1875rem;
   }
 
@@ -622,9 +650,17 @@ input[type="number"]:active, input[type="number"]:focus {
     letter-spacing: -0.15rem;
   }
 
+  .main-description {
+    max-width: 46rem;
+  }
+
+  .bmi-calculator {
+    max-width: 80rem;
+  }
+
   .details-capture {
+    grid-template-columns: 2rem minmax(18.6875rem, 37.375rem) minmax(1.5rem, 3rem) minmax(18.6875rem, 37.375rem) 2rem;
     grid-template-rows: 2rem 1.8125rem 2rem 1.9375rem 2rem 6.125rem 2rem minmax(9.3125rem,auto) 2rem;
-    grid-template-columns: 2rem 18.6875rem 1.5rem 18.6875rem 2rem;
     grid-template-areas:
     ". . . . ."
     ". bmi-sub-title bmi-sub-title bmi-sub-title ."
@@ -638,14 +674,15 @@ input[type="number"]:active, input[type="number"]:focus {
     ;
   }
 
-  input[type="radio"]:last-of-type {
-    margin-left: 14rem;
-}
+  .metric-imperial-selector {
+    grid-template-columns: 1.9375rem 1.12rem auto 2.5rem 1.9375rem 1.12rem auto;
+    
+  }
 
   .bmi-details-metric {
     display: grid;
     grid-area: bmi-details-input;
-    grid-template-columns: 18.6875rem 1.5rem 18.6875rem;
+    grid-template-columns: minmax(18.6875rem, 37.375rem) 1.5rem minmax(18.6875rem, 37.375rem);
     grid-template-rows: 1.8125rem 4.3125rem;
     grid-template-areas: 
     "metric-height-label . metric-weight-label"
@@ -653,13 +690,13 @@ input[type="number"]:active, input[type="number"]:focus {
   }
 
   .metric-height-input-container{
-    grid-template-columns: 13.5rem 5.1875rem;
+    grid-template-columns: minmax(13.5rem, 27rem) minmax(5.1875rem, 10.375rem);
     grid-template-rows: 4.3125rem;
 
   }
 
   .metric-weight-input-container{
-    grid-template-columns: 13.5rem 5.1875rem;
+    grid-template-columns: minmax(13.5rem, 27rem) minmax(5.1875rem, 10.375rem);
     grid-template-rows: 4.3125rem;
   } 
 
@@ -670,7 +707,7 @@ input[type="number"]:active, input[type="number"]:focus {
   .bmi-details-imperial {
     display: none;
     grid-area: bmi-details-input;
-    grid-template-columns: 18.6875rem 1.5rem 18.6875rem;
+    grid-template-columns: minmax(18.6875rem, 37.375rem) 1.5rem minmax(18.6875rem, 37.375rem);
     grid-template-rows: 1.8125rem 4.3125rem;
     grid-template-areas: 
     "imperial-height-label . imperial-weight-label"
@@ -678,47 +715,55 @@ input[type="number"]:active, input[type="number"]:focus {
   }
 
   .imperial-height-input-container{
-    grid-template-columns: 6.25rem 2.59375rem 1rem  6.25rem 2.59375rem;
+    grid-template-columns: minmax(6.25rem, 12.5rem) minmax(2.59375rem, 5.1875) minmax(1rem, 2rem) minmax(6.25rem, 12.5rem) minmax(2.59375rem, 5.1875rem);
     grid-template-rows: 4.3125rem;
   }
 
   .imperial-weight-input-container{
-    grid-template-columns: 6.25rem 2.59375rem 1rem  5.25rem 1rem 2.59375rem;
+    grid-template-columns: minmax(6.25rem, 12.5rem) minmax(2.59375rem, 5.1875rem) minmax(1rem,2rem) minmax(6.25rem, 10.5rem)  minmax(2.59375rem, 5.1875rem);
     grid-template-rows: 4.3125rem;
   } 
 
   .bmi-container {
     display: grid;
-    width: 48rem;
-    grid-template-columns: 19.939rem 4.69rem 20.6875rem 2.69rem;
+    min-width: 48rem;
+    grid-template-columns: minmax(19.939rem, 39.878rem) 4.69rem minmax(20.6875rem, 41.375rem) 2.69rem;
     grid-template-rows: 2.19rem 4.375rem 2rem 15rem 2.13rem;
     grid-template-areas: 
     "main-image . . ."
     "main-image . explanation-title ."
     "main-image . . ."
     "main-image . explanation-text."
-    "main-image . . ." ;
+    "main-image . . .";
     margin: 6rem 0;
   }
 
   .your-bmi-container {
     border-radius: 10rem 62.4rem 62.4rem 10rem;
+    justify-self: center;
+    width: 100%;
   }
 
   .your-bmi-container-result {
     display: flex;
+    justify-content: space-between;
   }
   
   .your-bmi-container-result > div {
-    width: 16.6875rem;
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: center;
   }
-
+  
   .your-bmi-result {
     padding: 0;
+    width: 12.549vw;
+  }
+
+  .your-bmi-feedback {
+    width: 34.766vw;
+    max-width: 25rem;
   }
 
   .bmi-explanation-title {
@@ -728,20 +773,27 @@ input[type="number"]:active, input[type="number"]:focus {
   .bmi-explanation-text {
     margin-top: 0;
     grid-area: explanation-text;
-  }
-  .main-image {
-    width: 22.5598rem;
-    height: 18.7034rem;
-    grid-area: main-image;
-    justify-self:end;
-    align-self: flex-end;
-    margin: 0;
+    max-width: 30rem;
+    align-self: start;
   }
 
-  .main-image > img {
-    width: 22.5598rem;
-    height: 25.693rem;
-    left: 0;
+  .main-image-container {
+    min-width: 27.1875rem;
+    min-height: 25.693rem;
+    grid-area: main-image;
+    justify-self:end;
+    align-self: end;
+    margin: 6rem 0 0 0;
+  }
+
+  .main-image {
+    max-height: 22.375rem;
+  }
+
+  .main-image-container > img {
+    min-width: 22.5598rem;
+    margin: 0 0 0 auto;
+    max-width: 27rem;
   }
 
   .bmi-container-position {
@@ -750,8 +802,8 @@ input[type="number"]:active, input[type="number"]:focus {
   }
 
   .highlights-container {
-    width: 48rem;
-    grid-template-columns: 2.44rem 4rem 2.5rem 36.375rem 2.69rem;
+    width: 100%;
+    grid-template-columns:minmax(2.44rem, 4.88rem) 4rem 2.5rem minmax(36.375rem, 72.75rem) minmax(2.69rem, 5.38rem);
     grid-template-rows: 3.75rem 3.3125rem 3rem 2.5rem 3.3125rem 3rem 2.5rem 3.3125rem 3rem 3.75rem;
     grid-template-areas: 
     ". . . . ."
@@ -767,6 +819,10 @@ input[type="number"]:active, input[type="number"]:focus {
     ;
   }
 
+  .highlights-container > * {
+    align-self: center;
+  }
+
   .highlights-gradient {
     background: linear-gradient(290deg, #D6E6FE 0%, rgba(214, 252, 254, 0.00) 100%);
   }
@@ -776,8 +832,8 @@ input[type="number"]:active, input[type="number"]:focus {
   }
 
   .limitations-container {
-    width: 48rem;
-    grid-template-columns: 2.44rem 20.968rem 0.94rem 20.968rem 2.69rem;
+    min-width: 48rem;
+    grid-template-columns: 2.44rem minmax(20.968rem, 41.936rem) 0.94rem minmax(20.968rem, 41.936rem) 2.69rem;
     grid-template-rows: 6rem 2.1875rem 2rem 4.5rem 3.5rem 14.5rem 1.5rem 16rem 1.5rem 14.5rem 6rem;
     grid-template-areas: 
     ". . . . ."
@@ -789,229 +845,224 @@ input[type="number"]:active, input[type="number"]:focus {
     ". . . . ."
     ". muscle . pregnancy ."
     ". . . . ."
-    ". race race race ."
+    ". race . . ."
     ". . . . .";
   } 
 
     .limitation-card {
-      width: 20.9687rem;
-      font-weight: 400;
+      padding: 2rem;
     }
 
     .race {
       justify-self: center;
-      width: 22.8125rem;
+      width: 47.526vw;
+      grid-column: 2/5;
     }
 
 }
 
 @media(min-width:1440px) {
-  .title-area {
-    width: 90rem;
-    grid-template-columns: 1.5rem 7.25rem 37.25rem 35.25rem 8.75rem;
-    grid-template-rows: 4.69rem 6.69rem 5.58rem 10.94rem 11.56rem 6.69rem;
-    grid-template-areas: 
-    ". . . . ."
-    ". . logo . ."
-    ". . . calculator ."
-    ". . main-title calculator ."
-    ". . main-description calculator ."
-    ". . . . .";
-  }
-
-  .title-gradient {
-    width: 61.125rem;
-    height: 46.0625rem;
-  }
-
-  .logo {
-    width: 4rem;
-    height: 4rem;
-  }
-
-  .main-title {
-    text-align: left;
-    font-size: 4rem;
-    letter-spacing: -0.2rem;
-  }
-
-  .main-description {
-    text-align: left;
-    width: 29.0625rem;
-  }
-
-  .details-capture {
-    grid-template-columns: 2rem 14.875rem 1.5rem 14.875rem 2rem;
-    grid-template-rows: 2rem 1.8125rem 2rem 1.9375rem 2rem minmax(6.125rem, auto) 2rem minmax(8.125rem,auto) 2rem;
-  }
-
-  input[type="radio"]:last-of-type {
-    margin-left: 10.19rem;
-  }
-
-  .bmi-details-metric {
-    grid-template-columns: 14.875rem 1.5rem 14.875rem;
-  }
-
-  .metric-height-input-container{
-    grid-template-columns: 9.6875rem 5.1875rem;
-    grid-template-rows: 4.3125rem;
-
-  }
-
-  .metric-weight-input-container{
-    grid-template-columns: 9.6875rem 5.1875rem;
-    grid-template-rows: 4.3125rem;
-  } 
-
-  .height-measure-cm, .weight-measure-kg, .weight-measure-lbs, .weight-measure-st, .height-measure-ft, .height-measure-in {
-    padding-right: 1.5rem;
-    justify-self: end;
-  }
-
-  .bmi-details-imperial {
-    grid-template-columns: 14.875rem 1.5rem 14.875rem;
-    grid-template-rows: 1.8125rem 4.3125rem 1.5rem 1.8125rem 4.3125rem;
-    grid-template-areas: 
-    "imperial-height-label . ."
-    "imperial-height-input-container imperial-height-input-container imperial-height-input-container"
-    ". . ."
-    "imperial-weight-label . ."
-    "imperial-weight-input-container imperial-weight-input-container imperial-weight-input-container";
-
+    .title-area {
+      width: 90rem;
+      grid-template-columns: 1.5rem 7.25rem 37.25rem 35.25rem 8.75rem;
+      grid-template-rows: 4.69rem 6.69rem 5.58rem 10.94rem 11.56rem 6.69rem;
+      grid-template-areas: 
+      ". . . . ."
+      ". . logo . ."
+      ". . . calculator ."
+      ". . main-title calculator ."
+      ". . main-description calculator ."
+      ". . . . .";
     }
-  
-  
-  .imperial-height-input-container{
-    grid-template-columns: 9.6875rem 5.1875rem 1.5rem 9.6875rem 5.1875rem;
-    grid-template-rows: 4.3125rem;
-    grid-template-areas: 
-    "imperial-height-input-ft imperial-height-input-ft . imperial-height-input-in imperial-height-input-in";
-  }
-  
-  .imperial-weight-input-container{
-    grid-template-columns:  9.6875rem 5.1875rem 1.5rem 8.875rem 0.8125rem 5.1875rem;
-    grid-template-rows: 4.3125rem;
-    grid-template-areas: 
-    "imperial-weight-input-st imperial-weight-input-st . imperial-weight-input-lbs imperial-weight-input-lbs imperial-weight-input-lbs";
-  }
 
-  .weight-measure-lbs {
-    grid-column: 6/7;
-  }
+    .title-gradient {
+      width: 61.125rem;
+      height: 46.0625rem;
+    }
 
-.left-swoop-img, .right-swoop-img {
-  display: block;
-}
+    .logo {
+      width: 4rem;
+      height: 4rem;
+    }
 
-.left-swoop-img {
-  grid-area: swoop-left;
-  width: 5.3125rem;
-  height: 12.5rem;
-}
+    .main-title {
+      text-align: left;
+      font-size: 4rem;
+      letter-spacing: -0.2rem;
+    }
 
-.bmi-container {
-  margin: 0;
-  width: 90rem;
-  grid-template-columns: 8.75rem 35.25rem 8.19rem 22.06rem 7.003rem 10.44rem;
-  grid-template-rows: 0.81rem 3.25rem 9.06rem 2.43rem 8.815rem 10.5rem 2.5rem 6rem;
-  grid-template-areas: 
-  ". . . . . ."
-  ". . . . swoop-left ."
-  ". main-image . . swoop-left ."
-  ". main-image . . . ."
-  ". main-image . explanation-title explanation-title ."
-  ". main-image . explanation-text explanation-text ."
-  ". main-image . . . ."
-  ". . . . . ."
-  ;
-}
+    .main-description {
+      text-align: left;
+      width: 29.0625rem;
+    }
 
-.main-image {
-  width: 35.25rem;
-  height: 24.25rem;
-}
+    .details-capture {
+      grid-template-columns: 2rem 14.875rem 1.5rem 14.875rem 2rem;
+      grid-template-rows: 2rem 1.8125rem 2rem 1.9375rem 2rem minmax(6.125rem, auto) 2rem minmax(8.125rem,auto) 2rem;
+    }
 
-.main-image >img {
-  width: 29.25rem;
-  height: 33.3125rem;
-  left: 3rem;
-}
+    .bmi-details-metric {
+      grid-template-columns: 14.875rem 1.5rem 14.875rem;
+    }
 
-.bmi-explanation-title {
-  font-size: 3rem;
-  width: 29.0625rem;
-  align-self: flex-start;
-  letter-spacing: -0.15rem
-}
+    .metric-height-input-container{
+      grid-template-columns: 9.6875rem 5.1875rem;
+      grid-template-rows: 4.3125rem;
+    }
 
-.bmi-explanation-text {
-  width: 29.0625rem;
-}
+    .metric-weight-input-container{
+      grid-template-columns: 9.6875rem 5.1875rem;
+      grid-template-rows: 4.3125rem;
+    } 
 
-.highlights-container {
-  width: 87rem;
-  grid-template-columns: 7.25rem 22.8125rem 2rem 22.8125rem 2rem 22.8125rem 7.31rem;
-  grid-template-rows: 4.5rem 6.61rem 3.3125rem 4.5rem 6rem;
-  grid-template-areas: 
-  ". . . . . . ."
-  ". eat-img . ex-img . sleep-img ."
-  ". eat-title . ex-title . sleep-title ."
-  ". eat-text . ex-text . sleep-text ."
-  ". . . . . . .";
-}
+    .height-measure-cm, .weight-measure-kg, .weight-measure-lbs, .weight-measure-st, .height-measure-ft, .height-measure-in {
+      padding-right: 1.5rem;
+      justify-self: end;
+    }
 
-.highlights-gradient {
-  border-radius: 2.19rem;
-}
+    .bmi-details-imperial {
+      grid-template-columns: 14.875rem 1.5rem 14.875rem;
+      grid-template-rows: 1.8125rem 4.3125rem 1.5rem 1.8125rem 4.3125rem;
+      grid-template-areas: 
+      "imperial-height-label . ."
+      "imperial-height-input-container imperial-height-input-container imperial-height-input-container"
+      ". . ."
+      "imperial-weight-label . ."
+      "imperial-weight-input-container imperial-weight-input-container imperial-weight-input-container";
+    }
+    
+    .imperial-height-input-container {
+      grid-template-columns: 9.6875rem 5.1875rem 1.5rem 9.6875rem 5.1875rem;
+      grid-template-rows: 4.3125rem;
+      grid-template-areas: 
+      "imperial-height-input-ft imperial-height-input-ft . imperial-height-input-in imperial-height-input-in";
+    }
+    
+    .imperial-weight-input-container {
+      grid-template-columns:  9.6875rem 5.1875rem 1.5rem 8.875rem 0.8125rem 5.1875rem;
+      grid-template-rows: 4.3125rem;
+      grid-template-areas: 
+      "imperial-weight-input-st imperial-weight-input-st . imperial-weight-input-lbs imperial-weight-input-lbs imperial-weight-input-lbs";
+    }
 
-.highlight-image:nth-of-type(1), .highlight-image:nth-of-type(2), .highlight-image:nth-of-type(3) {
-  align-self: start;
-}
+    .weight-measure-lbs {
+      grid-column: 6/7;
+    }
 
+    .left-swoop-img, .right-swoop-img {
+      display: block;
+    }
 
-.limitations-container {
-  width: 90rem;
-  grid-template-rows: 7.5rem 3.3125rem 2.1875rem 6rem 3rem 1.1875rem 0.8125rem 6.8125rem 4.6875rem 1.5rem 14.5em 7.5rem;
-  grid-template-columns: 8.75rem 10.3125rem 2.125rem 3.75rem 8.6875rem 10.375rem 2rem 6.25rem 4.1875rem 2rem 10.375rem 7.875rem 6.1875rem 8.75rem;
-  grid-template-areas: 
-  ". . . . . . . . . . . . . ."
-  ". lim-title lim-title lim-title lim-title . . . gender gender gender gender . ."
-  ". . . . . . . . gender gender gender gender . ." 
-  ". lim-text lim-text lim-text lim-text lim-text . . gender gender gender gender . ."
-  ". . . . . . . . gender gender gender gender . ."
-  ". . . . . . . . . . . . . ."
-  ". . . . . . . . . . . . . ."
-  ". . swoosh swoosh . age age age age . muscle muscle muscle ."
-  ". . swoosh swoosh . age age age age . muscle muscle muscle ."
-  ". . . . . . . . . . . . . ."
-  ". . .  pregnancy pregnancy pregnancy . race race race race . . ."
-  ". . . . . . . . . . . . . ."
-  
-}
+    .left-swoop-img {
+      grid-area: swoop-left;
+      width: 5.3125rem;
+      height: 12.5rem;
+    }
 
-  .limitations-title {
-    text-align: left;
-    font-size: 3rem;
-    letter-spacing: -2.4px;
-  }
+    .bmi-container {
+      margin: 0;
+      width: 90rem;
+      grid-template-columns: 8.75rem 35.25rem 8.19rem 22.06rem 7.003rem 10.44rem;
+      grid-template-rows: 0.81rem 3.25rem 9.06rem 2.43rem 8.815rem 10.5rem 2.5rem 6rem;
+      grid-template-areas: 
+      ". . . . . ."
+      ". . . . swoop-left ."
+      ". main-image . . swoop-left ."
+      ". main-image . . . ."
+      ". main-image . explanation-title explanation-title ."
+      ". main-image . explanation-text explanation-text ."
+      ". main-image . . . ."
+      ". . . . . ."
+      ;
+    }
 
-  .limitations-text {
-    text-align: left;
-    padding: 0;
-  }
+    .main-image {
+      width: 35.25rem;
+      height: 24.25rem;
+    }
 
-  .right-swoop-img {
-    display: block;
-    grid-area: swoosh;
-    height: 7.625rem;
-    width: 5.875rem;
-  }
+    .main-image >img {
+      width: 29.25rem;
+      height: 33.3125rem;
+    }
 
-  .limitation-card {
-    width: 22.8rem;
-    padding: 2rem;
-  }
+    .bmi-explanation-title {
+      font-size: 3rem;
+      width: 29.0625rem;
+      align-self: flex-start;
+      letter-spacing: -0.15rem
+    }
 
+    .bmi-explanation-text {
+      width: 29.0625rem;
+    }
+
+    .highlights-container {
+      width: 87rem;
+      grid-template-columns: 7.25rem 22.8125rem 2rem 22.8125rem 2rem 22.8125rem 7.31rem;
+      grid-template-rows: 4.5rem 6.61rem 3.3125rem 4.5rem 6rem;
+      grid-template-areas: 
+      ". . . . . . ."
+      ". eat-img . ex-img . sleep-img ."
+      ". eat-title . ex-title . sleep-title ."
+      ". eat-text . ex-text . sleep-text ."
+      ". . . . . . .";
+    }
+
+    .highlights-gradient {
+      border-radius: 2.19rem;
+    }
+
+    .highlight-image:nth-of-type(1), .highlight-image:nth-of-type(2), .highlight-image:nth-of-type(3) {
+      align-self: start;
+    }
+
+    .limitations-container {
+      width: 90rem;
+      grid-template-rows: 7.5rem 3.3125rem 2.1875rem 6rem 3rem 1.1875rem 0.8125rem 6.8125rem 4.6875rem 1.5rem 14.5em 7.5rem;
+      grid-template-columns: 8.75rem 10.3125rem 2.125rem 3.75rem 8.6875rem 10.375rem 2rem 6.25rem 4.1875rem 2rem 10.375rem 7.875rem 6.1875rem 8.75rem;
+      grid-template-areas: 
+      ". . . . . . . . . . . . . ."
+      ". lim-title lim-title lim-title lim-title . . . gender gender gender gender . ."
+      ". . . . . . . . gender gender gender gender . ." 
+      ". lim-text lim-text lim-text lim-text lim-text . . gender gender gender gender . ."
+      ". . . . . . . . gender gender gender gender . ."
+      ". . . . . . . . . . . . . ."
+      ". . . . . . . . . . . . . ."
+      ". . swoosh swoosh . age age age age . muscle muscle muscle ."
+      ". . swoosh swoosh . age age age age . muscle muscle muscle ."
+      ". . . . . . . . . . . . . ."
+      ". . .  pregnancy pregnancy pregnancy . race race race race . . ."
+      ". . . . . . . . . . . . . .";
+    }
+
+    .limitations-title {
+      text-align: left;
+      font-size: 3rem;
+      letter-spacing: -2.4px;
+    }
+
+    .limitations-text {
+      text-align: left;
+      padding: 0;
+    }
+
+    .right-swoop-img {
+      display: block;
+      grid-area: swoosh;
+      height: 7.625rem;
+      width: 5.875rem;
+    }
+
+    .limitation-card {
+      width: 22.8rem;
+      padding: 2rem;
+    }
+
+    .race {
+      justify-self:auto;
+      width: 22.8125rem;
+      grid-column: 8/11;
+    }
 
 } 
