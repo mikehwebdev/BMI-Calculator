@@ -30,28 +30,30 @@
             <div class="bmi-details-metric">
               <label for="metricHeight">Height</label>
               <div class="metric-height-input-container">
-                <input type="number" id="metricHeight" placeholder="0">
+                <!-- Inputs can have odd issues with minus numbers here and, after a bit of googling and testing, I've landed on the below which is verbose but workes exactly as I want it to. An event listener triggers a function that slices the input charcaters if they exceed more than 3 characters-->
+                <input type="number" id="metricHeight" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
+                
                 <p class="height-measure-cm">cm</p>
               </div>
               <label for="metricWeight">Weight</label>
               <div class="metric-weight-input-container">
-                <input type="number" id="metricWeight" placeholder="0">
+                <input type="number" id="metricWeight" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
                 <p class="weight-measure-kg">kg</p>
               </div>
             </div>
             <div class="bmi-details-imperial">
               <label for="imperialHeight">Height</label>
               <div class="imperial-height-input-container">
-                <input type="number" id="imperialHeight-ft" placeholder="0">
+                <input type="number" id="imperialHeight-ft" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
                 <p class="height-measure-ft">ft</p>                
-                <input type="number" id="imperialHeight-in" placeholder="0">
+                <input type="number" id="imperialHeight-in" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
                 <p class="height-measure-in">in</p>
               </div>
               <label for="imperialWeight">Weight</label>
               <div class="imperial-weight-input-container">          
-                <input type="number" id="imperialWeight-st" placeholder="0">
+                <input type="number" id="imperialWeight-st" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
                 <p class="weight-measure-st">st</p>
-                <input type="number" id="imperialWeight-lbs" placeholder="0">
+                <input type="number" id="imperialWeight-lbs" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
                 <p class="weight-measure-lbs">lbs</p>
               </div>
             </div>
@@ -69,7 +71,7 @@
           <div class="main-image"></div>
             <img src="img/tablet-main-image.png"  alt="Man eating sushi with chopsticks">
           </div>
-            <h2 class="bmi-explanation-title">What your BMI result means</h2>
+            <h2 class="bmi-explanation-title" onclick="testy()">What your BMI result means</h2>
             <p  class="bmi-explanation-text">A BMI range of 18.5 to 24.9 is considered a 'healthy weight.' Maintaining a healthy weight may lower your chances of experiencing health issues later on, such as obesity and type 2 diabetes. Aim for a nutritious diet with reduced fat and sugar content, incorporating ample fruits and vegetables. Additionally, strive for regular physical activity, ideally about 30 minutes daily for five days a week.</p>
         </section>
       </div>
@@ -135,6 +137,6 @@
           </div>
       </section>
     </main>
-    <script type="module" src="/main.js"></script>
+    <script src="/main.js"></script>
   </body>
 </html>

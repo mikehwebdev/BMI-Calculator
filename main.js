@@ -1,5 +1,4 @@
 
-
 const imperialRadioEl = document.getElementById('imperial')
 const metricRadioEl = document.getElementById('metric')
 
@@ -33,7 +32,27 @@ let bmi = 0
 let minWeightString = ''
 let maxWeightString = ''
 
+const inputs = document.querySelector('.details-capture')
+
+inputs.addEventListener('input', lengthCheck)
+
 // Utility functions
+
+//The 'inputs' listener here fires when the value of input changes - ideal for my needs here. If our value exceeds 500 on any input it automatically slices the last number off. This is great for input hygiene to ensure no excessively long numbers are used which can cause visual oddities such as excessivly long results or overflowing input values.
+
+function lengthCheck(e){
+    let changingInputValue = e.target.value
+    
+    if (changingInputValue > 500) {
+        e.target.value = changingInputValue.slice(0,-1); 
+    }
+
+    if (changingInputValue.length > 5) {
+        
+        e.target.value = changingInputValue.slice(0,5); 
+          
+     }
+}
 
 function imperialReady() {
     if (imperialHeightFeetEl.value && imperialHeightInchesEl.value && imperialWeightPoundsEl.value && imperialWeightStonesEl.value) {
