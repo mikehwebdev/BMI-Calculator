@@ -32,29 +32,29 @@
               <label for="metricHeight">Height</label>
               <div class="metric-height-input-container">
                 <!-- Inputs can have odd issues with minus numbers here and, after a bit of googling and testing, I've landed on the below which is verbose but workes exactly as I want it to. An event listener triggers a function that slices the input charcaters if they exceed more than 3 characters-->
-                <input type="number" id="metricHeight" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
+                <input type="number" id="metricHeight" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
                 
                 <p class="height-measure-cm">cm</p>
               </div>
               <label for="metricWeight">Weight</label>
               <div class="metric-weight-input-container">
-                <input type="number" id="metricWeight" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
+                <input type="number" id="metricWeight" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
                 <p class="weight-measure-kg">kg</p>
               </div>
             </div>
             <div class="bmi-details-imperial">
               <label for="imperialHeight">Height</label>
               <div class="imperial-height-input-container">
-                <input type="number" id="imperialHeight-ft" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
+                <input type="number" id="imperialHeight-ft" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
                 <p class="height-measure-ft">ft</p>                
-                <input type="number" id="imperialHeight-in" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
+                <input type="number" id="imperialHeight-in" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
                 <p class="height-measure-in">in</p>
               </div>
               <label for="imperialWeight">Weight</label>
               <div class="imperial-weight-input-container">          
-                <input type="number" id="imperialWeight-st" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
+                <input type="number" id="imperialWeight-st" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
                 <p class="weight-measure-st">st</p>
-                <input type="number" id="imperialWeight-lbs" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
+                <input type="number" id="imperialWeight-lbs" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="0">
                 <p class="weight-measure-lbs">lbs</p>
               </div>
             </div>

@@ -23,11 +23,7 @@ let imperialPoundsValue = 0
 let imperialFeetValue = 0
 let imperialInchesValue = 0
 
-let imperialHeightValue = 0
-let imperialWeightValue = 0
-
 let bmiText = ''
-let idealWeight = ''
 let bmi = 0
 let minWeightString = ''
 let maxWeightString = ''
