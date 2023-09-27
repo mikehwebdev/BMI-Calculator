@@ -13,6 +13,7 @@
 
 body {
   font-family: 'Inter', sans-serif;
+  /* The below sets the insertion caret to transparent as css Grid allows insertion carets on elements that can have the contenteditable attribute (e.g text elements). I add color to any inputs where I want this visible*/
   caret-color: transparent;
   font-weight: 400;
 }
@@ -79,11 +80,12 @@ main {
 .bmi-calculator {
   z-index: 2;
   max-width: 42.875rem;
+  /* fit-content below allows the bmi-calculator to grow in line with the your-bmi-container where the calculator results and weight range guide can vary */
   height:fit-content;
   border-radius: 1rem;
   background-color: var(--white);
   grid-area: calculator;
-  box-shadow: 16px 32px 56px 0px rgba(143, 174, 207, 0.25);
+  box-shadow: 1rem 2rem 3.5rem 0rem rgba(143, 174, 207, 0.25);
 }
 
 .details-capture {
@@ -342,6 +344,7 @@ label[for="imperialHeight"], label[for="imperialWeight"] {
   color: hsla(215, 17%, 45%, 1);
 }
 
+/* The below removes spinners in the numeric input field*/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -349,6 +352,7 @@ input::-webkit-inner-spin-button {
 }
 
 input[type="number"] {
+  /* The below removes spinners in the numeric input field for Firefox*/
   -moz-appearance: textfield;
   font-family: 'Inter', sans-serif;
   border: none;
@@ -369,7 +373,6 @@ input[type="number"]:active, input[type="number"]:focus {
   border: hsla(227, 92%, 58%, 1) 1px solid;
 }
 
-
 .your-bmi-container {
   border-radius: 1rem;
   padding: 2rem 2rem;
@@ -383,7 +386,6 @@ input[type="number"]:active, input[type="number"]:focus {
   line-height: 150%;
   margin-bottom: 0.5rem;
 }
-
 
 .your-bmi-welcome, .your-bmi-feedback {
   font-size: 0.875rem;
@@ -405,6 +407,7 @@ input[type="number"]:active, input[type="number"]:focus {
   margin-bottom: 4.4756rem;
 }
 
+/* These swoop images are only visilble at deskop resolution */
 .left-swoop-img {
   display: none;
 }
@@ -414,6 +417,9 @@ input[type="number"]:active, input[type="number"]:focus {
 }
 
 .bmi-container-position {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 }
 
@@ -426,7 +432,7 @@ input[type="number"]:active, input[type="number"]:focus {
 
 .main-image {
   position: absolute;
-  height: 73%;
+  height: 75%;
   bottom: 0;
   left: 0;
   right: 0;
@@ -484,6 +490,8 @@ input[type="number"]:active, input[type="number"]:focus {
   ". . . .";
 }
 
+
+/* I've never had cause to use :nth-of-type pseudo-class before so wanted to experiement here and it worked very well and saved a bunch of classes */
 .highlight-image:nth-of-type(1) {
   grid-area: eat-img;
 }
@@ -539,7 +547,7 @@ input[type="number"]:active, input[type="number"]:focus {
   color: var(--gunmetal);
   font-size: 1.5rem;
   font-weight: 600;
-  letter-spacing: -1.2px;
+  letter-spacing: -0.075rem;
 }
 
 .highlight-text {
@@ -582,8 +590,10 @@ input[type="number"]:active, input[type="number"]:focus {
 .limitations-text {
   color: var(--dark-electric-blue);
   text-align: center;
+  justify-self: center;
   grid-area: lim-text;
   line-height: 150%;
+  max-width: 57rem;
 }
 
 .gender {
@@ -787,7 +797,8 @@ input[type="number"]:active, input[type="number"]:focus {
   }
 
   .main-image {
-    max-height: 22.375rem;
+    height: 73%;
+    max-height: 22.4625rem;
   }
 
   .main-image-container > img {
@@ -819,22 +830,19 @@ input[type="number"]:active, input[type="number"]:focus {
     ;
   }
 
-  .highlights-container > * {
-    align-self: center;
-  }
 
   .highlights-gradient {
     background: linear-gradient(290deg, #D6E6FE 0%, rgba(214, 252, 254, 0.00) 100%);
   }
 
-  .highlight-image:nth-of-type(1), .highlight-image:nth-of-type(2), .highlight-image:nth-of-type(3) {
+  .highlight-image {
     align-self: center;
   }
 
   .limitations-container {
     min-width: 48rem;
     grid-template-columns: 2.44rem minmax(20.968rem, 41.936rem) 0.94rem minmax(20.968rem, 41.936rem) 2.69rem;
-    grid-template-rows: 6rem 2.1875rem 2rem 4.5rem 3.5rem 14.5rem 1.5rem 16rem 1.5rem 14.5rem 6rem;
+    grid-template-rows: 6rem 2.1875rem 2rem 4.5rem 3.5rem auto 1.5rem auto 1.5rem auto 6rem;
     grid-template-areas: 
     ". . . . ."
     ". lim-title lim-title lim-title ."
@@ -876,13 +884,15 @@ input[type="number"]:active, input[type="number"]:focus {
     }
 
     .title-gradient {
-      width: 61.125rem;
+      margin-left: 1.5rem;
+      width: 61.1rem;
       height: 46.0625rem;
     }
 
     .logo {
       width: 4rem;
       height: 4rem;
+      justify-self: start;
     }
 
     .main-title {
@@ -894,6 +904,7 @@ input[type="number"]:active, input[type="number"]:focus {
     .main-description {
       text-align: left;
       width: 29.0625rem;
+      justify-self: start;
     }
 
     .details-capture {
@@ -984,14 +995,20 @@ input[type="number"]:active, input[type="number"]:focus {
       width: 12.875rem;
       font-size: 0.875rem;
     }
-    .main-image {
+
+    .main-image-container {
       width: 35.25rem;
-      height: 24.25rem;
     }
 
-    .main-image >img {
+    .main-image {
+      max-height: none;
+    }
+
+    .main-image-container > img {
       width: 29.25rem;
       height: 33.3125rem;
+      max-width: none;
+      margin: auto;
     }
 
     .bmi-explanation-title {
@@ -1028,7 +1045,7 @@ input[type="number"]:active, input[type="number"]:focus {
     .limitations-container {
       width: 90rem;
       grid-template-rows: 7.5rem 3.3125rem 2.1875rem 6rem 3rem 1.1875rem 0.8125rem 6.8125rem 4.6875rem 1.5rem 14.5em 7.5rem;
-      grid-template-columns: 8.75rem 10.3125rem 2.125rem 3.75rem 8.6875rem 10.375rem 2rem 6.25rem 4.1875rem 2rem 10.375rem 7.875rem 6.1875rem 8.75rem;
+      grid-template-columns: 8.75rem 10.3125rem 2.125rem 3.75rem 8.6875rem 10.375rem 2rem 6.25rem 4.1875rem 2rem 10.375rem 6.4rem 6.1875rem 8.75rem;
       grid-template-areas: 
       ". . . . . . . . . . . . . ."
       ". lim-title lim-title lim-title lim-title . . . gender gender gender gender . ."
@@ -1053,6 +1070,7 @@ input[type="number"]:active, input[type="number"]:focus {
     .limitations-text {
       text-align: left;
       padding: 0;
+      max-width: none;
     }
 
     .right-swoop-img {
