@@ -94,9 +94,14 @@ function lengthCheck(e){
      }
 }
 
+
+console.log(metricHeightEl.value)
+
 function imperialUpdater(){
     
-    if (imperialHeightFeetEl.value && imperialHeightInchesEl.value && imperialWeightPoundsEl.value && imperialWeightStonesEl.value == true) {
+    if (imperialHeightFeetEl.value && imperialHeightInchesEl.value && imperialWeightPoundsEl.value && imperialWeightStonesEl.value) {
+        console.log(imperialWeightPoundsEl.value)
+        console.log(imperialWeightStonesEl.value)
         bmiCalculator('imperial')
     } else {
         bmiInfoContainer.innerHTML = 
@@ -128,7 +133,6 @@ function bmiCalculator(measurementSystem) {
         maxWeightString = `${maxWeight} kgs`
 
     } else {
-
         let calculatedImperialWeight = Number(imperialStonesValue) * 14 + Number(imperialPoundsValue)
         let calculatedImperialHeight = Number(imperialFeetValue) * 12 + Number(imperialInchesValue)
         bmi = (calculatedImperialWeight / Math.pow(calculatedImperialHeight, 2) * 703).toFixed(1)
@@ -164,7 +168,7 @@ function bmiHtmlUpdate() {
         `
     <div class="your-bmi-container-result">
         <div class="your-bmi-container-inner-left">
-            <p class="your-bmi-title">Your BMI is...</p>
+            <p class="your-bmi-result-title">Your BMI is...</p>
             <p class="your-bmi-result">${bmi}</p>
         </div>
         <div class="your-bmi-container-inner-right">

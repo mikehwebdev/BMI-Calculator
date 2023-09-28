@@ -115,6 +115,7 @@ span {
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.075rem;
+  line-height: 150%;
 }
 
 .metric-imperial-selector {
@@ -973,6 +974,11 @@ input[type="number"]:active, input[type="number"]:focus {
       line-height: normal;
     }
 
+    .your-bmi-result-title {
+      font-weight: 600;
+      line-height: 150%;
+      margin-bottom: 0.5rem;
+    }
     .left-swoop-img, .right-swoop-img {
       display: block;
     }
