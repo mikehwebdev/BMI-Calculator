@@ -130,6 +130,7 @@ span {
   line-height: 150%;
   font-weight: 600;
   align-self: center;
+  color: var(--gunmetal);
 }
 
 .radio-label:first-of-type {
@@ -362,7 +363,11 @@ input[type="number"] {
   font-weight: 600;
   padding: 0;
   caret-color: var(--gunmetal);
-  cursor: pointer;
+  cursor: pointer; 
+}
+
+input[type="number"]::placeholder {
+  opacity: 0.25;
 }
 
 input[type="number"] + p {
@@ -960,6 +965,14 @@ input[type="number"]:active, input[type="number"]:focus {
       grid-column: 6/7;
     }
 
+    .your-bmi-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.075rem;
+      margin-bottom: 1rem;
+      line-height: normal;
+    }
+
     .left-swoop-img, .right-swoop-img {
       display: block;
     }
@@ -980,7 +993,7 @@ input[type="number"]:active, input[type="number"]:focus {
       ". . . . swoop-left ."
       ". main-image . . swoop-left ."
       ". main-image . . . ."
-      ". main-image . explanation-title explanation-title ."
+      ". main-image . explanation-title explanation-title explanation-title"
       ". main-image . explanation-text explanation-text ."
       ". main-image . . . ."
       ". . . . . ."
@@ -1001,7 +1014,8 @@ input[type="number"]:active, input[type="number"]:focus {
     }
 
     .main-image {
-      max-height: none;
+      max-height: 24.245rem;
+      height: 100%;
     }
 
     .main-image-container > img {
@@ -1053,7 +1067,7 @@ input[type="number"]:active, input[type="number"]:focus {
       ". lim-text lim-text lim-text lim-text lim-text . . gender gender gender gender . ."
       ". . . . . . . . gender gender gender gender . ."
       ". . . . . . . . . . . . . ."
-      ". . . . . . . . . . . . . ."
+      ". . swoosh swoosh . . . . . . . . . ."
       ". . swoosh swoosh . age age age age . muscle muscle muscle ."
       ". . swoosh swoosh . age age age age . muscle muscle muscle ."
       ". . . . . . . . . . . . . ."
@@ -1064,7 +1078,7 @@ input[type="number"]:active, input[type="number"]:focus {
     .limitations-title {
       text-align: left;
       font-size: 3rem;
-      letter-spacing: -2.4px;
+      letter-spacing: -0.15rem;
     }
 
     .limitations-text {

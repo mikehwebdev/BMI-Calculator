@@ -32,7 +32,6 @@ const inputs = document.querySelector('.details-capture')
 
 // Event listeners
 
-
 // These event listeners toggle the metric or imperial view for inputting your measurements
 
 imperialRadioEl.addEventListener('click', () => {
@@ -45,7 +44,7 @@ metricRadioEl.addEventListener('click', () => {
     metricInputsEl.style.display = 'grid'
 })
 
-// THe rest of these event listeners trigger if data has been entered into the input fields. This then runs either the imperialUpdater function or metricUpdater function to ensure all fields are entered. This ensures that the BMI result doesn't change constantly while the user is entering their specifics and makes for a better user experience. If all input fields have a value the main bmiCalculator function executes with the parameter of which measurement system is being entered and the BMI is calculated accordingly.  
+// The rest of these event listeners trigger if data has been entered into the input fields. This then runs either the imperialUpdater function or metricUpdater function to ensure all fields are entered. This ensures that the BMI result doesn't change constantly while the user is entering their specifics and makes for a better user experience. If all input fields have a value the main bmiCalculator function executes with the parameter of which measurement system is being entered and the BMI is calculated accordingly.  
 
 metricHeightEl.addEventListener('keyup', () => {
     metricHeightValue = metricHeightEl.value
@@ -76,8 +75,6 @@ imperialWeightPoundsEl.addEventListener('keyup', () => {
     imperialPoundsValue = imperialWeightPoundsEl.value
     imperialUpdater()
 })
-
-
 
 // Utility functions
 
